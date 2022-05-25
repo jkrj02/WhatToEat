@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.jkrj02.whattoeat.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_blankFragment2_to_listFragment"
+            app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_useFragment"
+            app:destination="@id/useFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.jkrj02.whattoeat.eatPackage.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_foodListFragment"
+            app:destination="@id/foodListFragment" >
+            <argument
+                android:name="foodListArgs"
+                android:defaultValue="0" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.jkrj02.whattoeat.eatPackage.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/useFragment"
+        android:name="com.jkrj02.whattoeat.UseFragment"
+        android:label="fragment_use"
+        tools:layout="@layout/fragment_use" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.jkrj02.whattoeat.eatPackage.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="newItem"
+            app:argType="com.jkrj02.whattoeat.data.model.EatData" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodListFragment"
+        android:name="com.jkrj02.whattoeat.foodPackage.FoodListFragment"
+        android:label="fragment_food_list"
+        tools:layout="@layout/fragment_food_list" >
+        <action
+            android:id="@+id/action_foodListFragment_to_foodAddFragment"
+            app:destination="@id/foodAddFragment" />
+        <argument android:name="foodListArgs"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_foodListFragment_to_foodUpdateFragment"
+            app:destination="@id/foodUpdateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodAddFragment"
+        android:name="com.jkrj02.whattoeat.foodPackage.FoodAddFragment"
+        android:label="fragment_food_add"
+        tools:layout="@layout/fragment_food_add" >
+        <argument
+            android:name="foodAddArgs"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_foodAddFragment_to_foodListFragment"
+            app:destination="@id/foodListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodUpdateFragment"
+        android:name="com.jkrj02.whattoeat.foodPackage.FoodUpdateFragment"
+        android:label="fragment_food_update"
+        tools:layout="@layout/fragment_food_update" >
+        <action
+            android:id="@+id/action_foodUpdateFragment_to_foodListFragment"
+            app:destination="@id/foodListFragment" />
+        <argument
+            android:name="foodUpdateArgs"
+            app:argType="com.jkrj02.whattoeat.data.model.FoodData" />
+    </fragment>
+</navigation>
